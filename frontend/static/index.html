@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortenson PTP Agent | Google Data Center</title>
+    <!-- Adobe Typekit: Mortenson Brand Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/uui1xls.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                <img src="https://www.mortenson.com/content/experience-fragments/mortenson/language-masters/en/header/master/_jcr_content/root/header/image.coreimg.svg/1732561594947/logo.svg" alt="Mortenson" style="max-width: 180px;">
+                <div style="font-weight: 700; font-size: 20px; color: var(--brand-blue); text-transform: uppercase; letter-spacing: 0.5px;">Pre-Task Planning</div>
+            </div>
+            
+            <div class="settings-panel">
+                <h3>Settings & Compliance</h3>
+                
+                <div class="toggle-group">
+                    <label for="gc-standard">Safety Standard</label>
+                    <select id="gc-standard" class="custom-select">
+                        <option value="Google Standard">Google Standard</option>
+                        <option value="GC Standard">GC Standard (Mortenson)</option>
+                        <option value="Combined Best Practice" selected>Combined Best Practice</option>
+                    </select>
+                </div>
+                
+                <div class="info-card">
+                    <i class="fas fa-shield-halved"></i>
+                    <div>
+                        <h4>R2 L2 Program Active</h4>
+                        <p>Global lessons learned repository synced.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-panel">
+                <button id="new-chat-btn" class="btn secondary">
+                    <i class="fas fa-plus"></i> New Planning Session
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <header class="topbar">
+                <h2>Google Data Center Execution Planning</h2>
+                <div class="status-indicator">
+                    <div class="pulse"></div> P6 Integration Online
+                </div>
+            </header>
+
+            <div class="chat-container">
+                <div id="chat-history" class="chat-history">
+                    <div class="message system-msg">
+                        <div class="avatar"><i class="fas fa-robot"></i></div>
+                        <div class="message-content">
+                            <p>Hello! I am the Mortenson PTP Agent for Google Data Centers. I can help synthesize schedule data, safety records (IRIS), and technical specs into execution plans. How can I assist you with your task today?</p>
+                            <p class="suggestion"><em>Click a prompt below to try out the agent:</em></p>
+                            <div class="test-prompts">
+                                <button class="prompt-pill" onclick="sendTestPrompt(this.innerText)">What are the upcoming high-risk tasks?</button>
+                                <button class="prompt-pill" onclick="sendTestPrompt(this.innerText)">Generate a PTP for Medium Voltage Cabling.</button>
+                                <button class="prompt-pill" onclick="sendTestPrompt(this.innerText)">Search IRIS for fall protection hazards.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-input-area">
+                    <form id="chat-form">
+                        <input type="text" id="chat-input" placeholder="Describe the task or ask for the schedule..." autocomplete="off" required>
+                        <button type="submit" id="send-btn" class="btn primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- UI Overlay for Document View -->
+    <div id="document-overlay" class="overlay hidden">
+        <div class="document-modal">
+            <button id="close-modal-btn" class="btn-close"><i class="fas fa-times"></i></button>
+            <div class="document-content" id="document-content">
+                <!-- Dynamically populated render area -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Markdown Parser via marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
