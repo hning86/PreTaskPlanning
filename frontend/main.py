@@ -14,9 +14,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Mount the static directory
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
-@app.get("/")
-async def root():
-    return FileResponse(os.path.join("static", "index.html"))
+# Mount the static directory at the root so index.html and relative assets resolve natively
+app.mount("/", StaticFiles(directory="static", html=True), name="static")

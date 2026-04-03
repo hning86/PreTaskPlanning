@@ -35,6 +35,28 @@ document.addEventListener('DOMContentLoaded', () => {
             contentDiv.innerHTML = `<p style="color: var(--danger)">Connection to Local Agent failed. Is the server running?</p>`;
         }
     });
+    
+    const doubleCheckBtn = document.getElementById('double-check-btn');
+    if (doubleCheckBtn) {
+        doubleCheckBtn.addEventListener('click', async () => {
+            const standardPreference = gcStandardToggle.value;
+            const prompt = `[Standard Applied: ${standardPreference}] Please ask me a critical, specific pre-task planning verification question to make sure I am not missing any hazards. Do not explain yourself, just ask the question directly.`;
+            
+            // Create an empty agent message space without creating a user message space first
+            const assistantMessageEl = createMessageSpace('system');
+            const contentDiv = assistantMessageEl.querySelector('.message-content');
+            
+            // Add typing indicator
+            contentDiv.innerHTML = `<div class="typing-indicator"><span></span><span></span><span></span></div>`;
+            
+            try {
+                await streamResponse(prompt, contentDiv);
+            } catch (error) {
+                console.error('Streaming error:', error);
+                contentDiv.innerHTML = `<p style="color: var(--danger)">Connection to Local Agent failed. Is the server running?</p>`;
+            }
+        });
+    }
 
     function addMessageToUI(role, text) {
         const msgDiv = document.createElement('div');
