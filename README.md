@@ -66,5 +66,6 @@ USE_VERTEX_AI=true
 ## 🌟 Key Features
 
 -   **Interactive Test Prompts**: Quick-click pills to test common scenarios (e.g., listing high-risk tasks).
+-   **Spontaneous Agent Verification**: A dedicated "Ask For Verification" button that triggers the agent to proactively ask a critical safety double-check question without echoing any user prompts, simulating an agent-initiated interaction.
 -   **Tool Tracing**: Visual indicators in the chat when the agent invokes specific tools (like querying schedule or safety records).
--   **Crisp Light Mode**: Styled according to Mortenson's corporate guidelines with official fonts and logos.
+-   **Crisp Light Mode**: Styled according to Mortenson's corporate guidelines with official standard Adobe Typekit fonts and dynamic SVG logos.
